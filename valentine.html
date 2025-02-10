@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Valentine's Day</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Arial", sans-serif;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #afa9a9, #fad0c4);
+        color: #ff3366;
+        text-align: center;
+        padding: 20px;
+        overflow: hidden;
+      }
+
+      .menu {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .menu button {
+        background: #ff4d6d;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .menu button:hover {
+        background: #d6336c;
+      }
+
+      .section {
+        display: none;
+        width: 100%;
+        max-width: 400px;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .section.active {
+        display: block;
+      }
+
+      .typing-text {
+        font-size: 22px;
+        font-weight: bold;
+        color: #ff3366;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 3px solid #ff3366;
+        width: 0;
+        animation: typing 4s steps(40, end) forwards, blink 0.8s infinite;
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes blink {
+        50% {
+          border-color: transparent;
+        }
+      }
+
+      .carousel {
+        position: relative;
+        width: 100%;
+        max-width: 300px;
+        margin-top: 15px;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .carousel img {
+        width: 100%;
+        display: none;
+      }
+
+      .carousel img.active {
+        display: block;
+      }
+
+      .floating-hearts {
+        position: absolute;
+        top: 20;
+        left: 50%;
+        transform: translateX(-90%);
+        font-size: 30px;
+        opacity: 0.8;
+        animation: float 2s infinite ease-in-out;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0);
+          opacity: 0.8;
+        }
+        50% {
+          transform: translateY(-60px);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-80px);
+          opacity: 0.5;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="floating-hearts">💖💞💕</div>
+
+    <div class="menu">
+      <button onclick="showSection('home')">Home</button>
+      <button onclick="showSection('picture')">Picture</button>
+      <button onclick="showSection('message')">Message</button>
+    </div>
+
+    <div id="home" class="section active">
+      <h1 class="typing-text">Happy Valentine's Day, Aki! 💖</h1>
+      <p>Happy Valentine's Day, Aki! 💖</p>
+      <p>You are my sunshine on a cloudy day.☀️</p>
+      <p>Every moment with you feels like magic. ✨</p>
+      <p>You are the best part of my life. ❤️</p>
+      <p>I love you endlessly. 💕</p>
+    </div>
+
+    <div id="picture" class="section">
+      <h1 class="typing-text">💕 A Special Picture 💕</h1>
+      <div class="carousel" style="display: flex; justify-self: center">
+        <img src="./1.jpeg" alt="Romantic Picture 1" />
+        <img src="./2.jpeg" alt="Romantic Picture 2" />
+        <img src="./3.jpeg" alt="Romantic Picture 3" />
+        <img src="./4.jpeg" alt="Romantic Picture 4" />
+        <img src="./6.jpeg" alt="Romantic Picture 6" />
+        <img src="./7.jpeg" alt="Romantic Picture 7" />
+      </div>
+      <p>Every moment with you is special. ❤️</p>
+    </div>
+
+    <div id="message" class="section">
+      <h1 class="typing-text">💌 A Love Letter 💌</h1>
+     <p>My dearest Aki,</p>
+<p>You are my happiness and my forever. ❤️</p>
+<p>From the moment we met, my heart knew you were special. Every day with you is a gift, and your love fills my life with joy. Your kindness, laughter, and warmth make every moment magical. I cherish every smile, every hug, and every second spent by your side. No matter what life brings, I promise to stand with you, support you, and love you endlessly. You are my best friend, my love, my safe haven. With you, every day is brighter, and every challenge is easier. I thank the universe for bringing you into my life. I will love you today, tomorrow, and forever. ❤️</p>
+
+    </div>
+
+    <script>
+      function showSection(sectionId) {
+        document.querySelectorAll(".section").forEach((section) => {
+          section.classList.remove("active");
+        });
+        document.getElementById(sectionId).classList.add("active");
+      }
+
+      function startCarousel() {
+        const images = document.querySelectorAll(".carousel img");
+        let index = 0;
+        setInterval(() => {
+          images[index].classList.remove("active");
+          index = (index + 1) % images.length;
+          images[index].classList.add("active");
+        }, 5000);
+      }
+
+      document.addEventListener("DOMContentLoaded", startCarousel);
+    </script>
+  </body>
+</html>

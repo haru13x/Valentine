@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            margin: 0;
+        }
+
+        .login-container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #ff416c;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #ff416c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #e03158;
+        }
+
+        #error-message {
+            color: red;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        <input type="text" id="callsign" placeholder="Enter Callsign">
+        <input type="date" id="startdate">
+        <br>
+        <button onclick="validateLogin()">Login</button>
+        <p id="error-message"></p>
+    </div>
+
+    <script>
+        function validateLogin() {
+            var callsign = document.getElementById("callsign").value.trim();
+            var startdate = document.getElementById("startdate").value;
+
+            // Convert date to MM-DD-YY format
+            var formattedDate = new Date(startdate);
+            var month = ("0" + (formattedDate.getMonth() + 1)).slice(-2);
+            var day = ("0" + formattedDate.getDate()).slice(-2);
+            var year = formattedDate.getFullYear().toString().slice(-2);
+            var finalDate = month + "-" + day + "-" + year;
+
+            if ((callsign === "Aki" || callsign === "aki") && finalDate === "09-28-24") {
+                window.location.href = "valentine.html";
+            } else {
+                document.getElementById("error-message").innerText = "Wrong Credentials!";
+            }
+        }
+    </script>
+
+</body>
+</html>
